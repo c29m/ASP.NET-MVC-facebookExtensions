@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Fbml.cs" />
     <Compile Include="HtmlHelperExtensions.cs" />
+    <Compile Include="Markup\LikeType.cs" />
     <Compile Include="Markup\OpenGraph.cs" />
     <Compile Include="Markup\OpenGraphType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

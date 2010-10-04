@@ -7,12 +7,17 @@ namespace FacebookExtensions.Markup
     {
         public string Like()
         {
-            return Like(string.Empty, string.Empty);
+            return LikeOrRecommend(LikeType.Like, string.Empty, string.Empty);
         }
 
-        public string Like(string href, string linkReference)
+        public string Recommend()
         {
-            return string.Format("<fb:like href=\"{0}\" ref=\"{1}\" show_faces=\"false\" width=\"510\" font=\"arial\" style=\"font-size:12px\" action=\"recommend\" ></fb:like>", href, linkReference);
+            return LikeOrRecommend(LikeType.Recommend, string.Empty, string.Empty);
+        }
+
+        public string LikeOrRecommend(LikeType likeType, string href, string linkReference)
+        {
+            return string.Format("<fb:like href=\"{0}\" ref=\"{1}\" show_faces=\"false\" width=\"510\" font=\"arial\" style=\"font-size:12px\" action=\"{2}\" ></fb:like>", href, linkReference, likeType.ToString().ToLower());
         }
 
         public string ActivityFeed()
