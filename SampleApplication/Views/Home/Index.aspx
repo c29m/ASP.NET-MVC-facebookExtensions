@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 <%@ Import Namespace="FacebookExtensions" %>
 <%@ Import Namespace="FacebookExtensions.Markup" %>
+<%@ Import Namespace="FacebookExtensions.Markup.SocialPlugin.Like" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Home Page
