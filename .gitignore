@@ -1,0 +1,28 @@
+# VS Bits
+obj
+bin
+*.suo
+Publish.xml
+
+# ReSharper
+_ReSharper.*
+*.user
+
+# Runtime/Misc Junk :)
+*.log*
+.sass-cache
+.orig
+
+# SASS-Generated Files
+Website/GG.Web.Website/content/tabulous/css/**/*.css
+Website/GG.Web.Website/content/*/css/*/*.css 
+Website/GG.Web.Website/content/tabulous/css/*/*.css
+Website/GG.Web.Website/content/*/css
+
+# Project Build Output
+Website/GG.Service.MSMQListenerService.Installer/Debug/
+Integration/Libs/GG.Integration.ThreeDSecure.dll
+/Website/GG.Web.Website/GG.Web.Website.Publish.xml
+Website/GG.Service.MSMQListenerService.Installer/Staging
+/Integration/EmailVision/GG.Integration.EmailVision.MsmqService.Installer/Debug
+/Integration/EmailVision/GG.Integration.EmailVision.MsmqService.Installer/Release

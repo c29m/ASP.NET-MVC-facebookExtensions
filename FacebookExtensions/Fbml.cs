@@ -7,11 +7,13 @@ namespace FacebookExtensions
     {
         public SocialPlugins SocialPlugins { get; set; }
         public OpenGraph OpenGraph { get; set; }
+        public JavascriptSdk JavascriptSdk { get; set; }
 
         public Fbml()
         {
             SocialPlugins = new SocialPlugins();
             OpenGraph = new OpenGraph();
+            JavascriptSdk = new JavascriptSdk();
         }
 
         public string EnableJavascriptSdk(string facebookAppId)
