@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 <%@ Import Namespace="FacebookExtensions" %>
 <%@ Import Namespace="FacebookExtensions.Markup" %>
+<%@ Import Namespace="FacebookExtensions.Markup.Javascript" %>
 <%@ Import Namespace="FacebookExtensions.Markup.SocialPlugin.Like" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
@@ -40,4 +41,23 @@
 
     <h2>Recommendations</h2>
     <div><%=Html.Facebook().SocialPlugins.Recommendations() %></div>
+
+
+    <h1>Javascript SDK</h1>
+
+    <script type="text/javascript">
+    function Share()
+    {
+        <%=Html.Facebook().JavascriptSdk.Stream.Publish()
+                                        .Message("This is a shared message")
+                                        .WithAttachment(new StreamPublishAttachment { Name = "Google", 
+                                                                                      Description = "Google", 
+                                                                                      Href = "http://www.google.com", 
+                                                                                      Media = new StreamPublishMediaItem { Src = "http://www.google.com/logo.jpg" } })
+                                        .AddActionLink("Visit Google!", "http://www.google.com")%>
+    }
+    </script>
+
+    <a href="#" onclick="Share();">Share!</a>
+
 </asp:Content>
