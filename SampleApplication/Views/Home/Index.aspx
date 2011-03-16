@@ -42,6 +42,9 @@
     <h2>Recommendations</h2>
     <div><%=Html.Facebook().SocialPlugins.Recommendations() %></div>
 
+    <h2>Registration</h2>
+    <div><%=Html.Facebook().SocialPlugins.Registration("355645108863", new Uri("http://localdevpc.justgiving.com/"), "")%></div>
+
 
     <h1>Javascript SDK</h1>
 

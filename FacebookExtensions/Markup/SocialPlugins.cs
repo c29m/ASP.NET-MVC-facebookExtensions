@@ -1,4 +1,6 @@
-﻿using FacebookExtensions.Markup.SocialPlugin;
+﻿using System;
+using System.Web;
+using FacebookExtensions.Markup.SocialPlugin;
 using FacebookExtensions.Markup.SocialPlugin.Like;
 
 namespace FacebookExtensions.Markup
@@ -46,6 +48,25 @@ namespace FacebookExtensions.Markup
         {
             return string.Format("<fb:recommendations width=\"{0}\" height=\"{1}\" header=\"{2}\" font=\"{3}\" border_color=\"{4}\" site=\"{5}\"></fb:recommendations>",
                     width, height, showHeader, font, borderColor, site);
+        }
+
+        public string Registration(string appId, Uri redirectUri, string fields, bool? facebookOnly = false, string cssWidth = "100%", string cssHeight = "330", string borderColor = "")
+        {
+            var fields = "";
+            
+            return string.Format(@"
+                <iframe src=""http://www.facebook.com/plugins/registration.php?
+                             client_id={0}&
+                             redirect_uri={1}&
+                             fields={2}""
+                        scrolling=""auto""
+                        frameborder=""no""
+                        style=""border:none""
+                        allowTransparency=""true""
+                        width=""100%""
+                        height=""330"">
+                </iframe>
+            ", appId, HttpUtility.UrlEncode(redirectUri.ToString()), fields);
         }
     }
 }
