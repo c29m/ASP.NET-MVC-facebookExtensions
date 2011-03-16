@@ -1,22 +1,19 @@
-﻿using System;
-using System.Globalization;
-using System.Text;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace FacebookExtensions
 {
     public static class HtmlHelperExtensions
     {
-        private static readonly Fbml _fbml;
+        private static readonly Fbml Fbml;
 
         static HtmlHelperExtensions()
         {
-            _fbml = new Fbml();
+            Fbml = new Fbml();
         }
 
         public static Fbml Facebook(this HtmlHelper helper)
         {
-            return _fbml;
+            return Fbml;
         }
     }
 }
