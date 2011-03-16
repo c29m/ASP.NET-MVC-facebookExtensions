@@ -52,8 +52,6 @@ namespace FacebookExtensions.Markup
 
         public string Registration(string appId, Uri redirectUri, string fields, bool? facebookOnly = false, string cssWidth = "100%", string cssHeight = "330", string borderColor = "")
         {
-            var fields = "";
-            
             return string.Format(@"
                 <iframe src=""http://www.facebook.com/plugins/registration.php?
                              client_id={0}&
