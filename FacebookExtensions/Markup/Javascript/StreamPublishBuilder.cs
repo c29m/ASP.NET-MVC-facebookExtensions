@@ -39,6 +39,7 @@ namespace FacebookExtensions.Markup.Javascript
             const string mediaEntryTemplate = "{{'type':'image','src':'{0}','href':'{1}'}}";
             const string actionLinkTemplate = "{{ 'text': '{0}', 'href': '{1}' }}";
             const string attachmentTemplate = "'attachment': {{ 'name': '{0}', 'caption': '{1}', 'description': '{2}', 'href': '{3}', 'media':[{4}] }}";
+            const string attachmentTemplateWithDescriptionCallback = "'attachment': {{ 'name': '{0}', 'caption': '{1}', 'description': {2}({{'description':'{3}', 'data':{4}}}), 'href': '{5}', 'media':[{6}] }}";
             const string fbUiTemplate = @"FB.ui({{'method': '{0}','message': '{1}',{2} 'action_links': [{3}],'user_message_prompt': '{4}'}},function (response) {{  }});";
 
             var attachmentBuilder = new StringBuilder();
@@ -50,7 +51,20 @@ namespace FacebookExtensions.Markup.Javascript
                     mediaTemplates = string.Format(mediaEntryTemplate, _attachment.Media.Src, _attachment.Media.Href );
                 }
 
-                attachmentBuilder.AppendFormat(attachmentTemplate, _attachment.Name, _attachment.Caption, _attachment.Description, _attachment.Href, mediaTemplates);
+                if (string.IsNullOrWhiteSpace(_attachment.DescriptionClientCallbackFunction))
+                {
+                    attachmentBuilder.AppendFormat(attachmentTemplate, _attachment.Name, _attachment.Caption,
+                                                   _attachment.Description, _attachment.Href, mediaTemplates);
+                }
+                else
+                {
+                    attachmentBuilder.AppendFormat(attachmentTemplateWithDescriptionCallback, _attachment.Name,
+                                                   _attachment.Caption, _attachment.DescriptionClientCallbackFunction,
+                                                   _attachment.Description,
+                                                   _attachment.DescriptionClientCallbackData,
+                                                    _attachment.Href, mediaTemplates);
+                }
+
                 attachmentBuilder.Append(",");
             }
 
