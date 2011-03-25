@@ -37,9 +37,9 @@ namespace FacebookExtensions.Markup.Javascript
         public string ToJavascript()
         {
             const string mediaEntryTemplate = "{{'type':'image','src':'{0}','href':'{1}'}}";
-            const string actionLinkTemplate = "{{ text: '{0}', href: '{1}' }}";
-            const string attachmentTemplate = "attachment: {{ name: '{0}', caption: '{1}', description: '{2}', href: '{3}', 'media':[{4}] }}";
-            const string fbUiTemplate = @"FB.ui({{method: '{0}',message: '{1}',{2} action_links: [{3}],user_message_prompt: ''}},function (response) {{  }});";
+            const string actionLinkTemplate = "{{ 'text': '{0}', 'href': '{1}' }}";
+            const string attachmentTemplate = "'attachment': {{ 'name': '{0}', 'caption': '{1}', 'description': '{2}', 'href': '{3}', 'media':[{4}] }}";
+            const string fbUiTemplate = @"FB.ui({{'method': '{0}','message': '{1}',{2} 'action_links': [{3}],'user_message_prompt': '{4}'}},function (response) {{  }});";
 
             var attachmentBuilder = new StringBuilder();
             if (_attachment != null)
@@ -64,7 +64,7 @@ namespace FacebookExtensions.Markup.Javascript
                 actionLinkBuilder.AppendFormat(actionLinkTemplate, actionLink.Text, actionLink.Href);
             }
 
-            var built = string.Format(fbUiTemplate, _method, _message, attachmentBuilder, actionLinkBuilder);
+            var built = string.Format(fbUiTemplate, _method, _message, attachmentBuilder, actionLinkBuilder, "");
 
             return built;
         }
