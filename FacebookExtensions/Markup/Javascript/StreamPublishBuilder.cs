@@ -9,6 +9,7 @@ namespace FacebookExtensions.Markup.Javascript
         private string _message;
         private StreamPublishAttachment _attachment;
         private readonly List<StreamPublishActionLink> _actionLinks;
+        private string _userMessagePrompt;
 
         public StreamPublishBuilder(string method)
         {
@@ -19,6 +20,12 @@ namespace FacebookExtensions.Markup.Javascript
         public StreamPublishBuilder Message(string message)
         {
             _message = message;
+            return this;
+        }
+
+        public StreamPublishBuilder UserMessagePrompt(string userMessagePrompt)
+        {
+            _userMessagePrompt = userMessagePrompt;
             return this;
         }
 
@@ -78,7 +85,7 @@ namespace FacebookExtensions.Markup.Javascript
                 actionLinkBuilder.AppendFormat(actionLinkTemplate, actionLink.Text, actionLink.Href);
             }
 
-            var built = string.Format(fbUiTemplate, _method, _message, attachmentBuilder, actionLinkBuilder, "");
+            var built = string.Format(fbUiTemplate, _method, _message, attachmentBuilder, actionLinkBuilder, _userMessagePrompt);
 
             return built;
         }
